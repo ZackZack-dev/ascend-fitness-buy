@@ -29,7 +29,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Barlow:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
   <style>
-    /* ═══ DESIGN TOKENS — matched to ascendfit live site ═══ */
     :root {
       --lp-black:    #0A0A0A;
       --lp-panel:    #141414;
@@ -54,12 +53,10 @@
       background: var(--lp-black); line-height: 1.7;
       color: var(--lp-cream); -webkit-font-smoothing: antialiased;
     }
-    /* ── RESETS ── */
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     button { cursor: pointer; border: none; font-family: var(--lp-font-body); }
 
-    /* ── TYPOGRAPHY ── */
     .lp-h1 { font-family: var(--lp-font-display); font-size: clamp(44px, 8vw, 82px); font-weight: 900; line-height: 0.95; text-transform: uppercase; letter-spacing: 0.5px; color: #fff; }
     .lp-h2 { font-family: var(--lp-font-display); font-size: clamp(34px, 6vw, 62px); font-weight: 800; line-height: 1.02; text-transform: uppercase; letter-spacing: 0.4px; color: #fff; margin-bottom: 18px; }
     .lp-h3 { font-family: var(--lp-font-display); font-size: clamp(24px, 4vw, 36px); font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; color: #fff; }
@@ -73,7 +70,6 @@
     p { margin-bottom: 18px; color: var(--lp-muted); font-size: 16.5px; }
     .lp-container { max-width: var(--lp-max); margin: 0 auto; padding: 0 24px; }
 
-    /* ── BUTTONS ── */
     .lp-btn {
       display: inline-block; padding: 18px 44px; font-family: var(--lp-font-display);
       font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; color: #0A0A0A !important;
@@ -81,10 +77,16 @@
       box-shadow: 0 6px 24px rgba(201,151,42,0.35);
     }
     .lp-btn:hover { background: #DDA72F; transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,151,42,0.4); }
+    .lp-btn-outline {
+      display: inline-block; padding: 16px 40px; font-family: var(--lp-font-display);
+      font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+      color: var(--lp-gold) !important; background: transparent;
+      border: 2px solid var(--lp-gold); border-radius: 100px; transition: all 0.2s;
+    }
+    .lp-btn-outline:hover { background: rgba(201,151,42,0.1); }
     .lp-btn-dark { background: var(--lp-cream); color: #0A0A0A !important; box-shadow: none; }
     .lp-btn-dark:hover { background: #fff; }
 
-    /* ── HERO ── */
     .lp-hero {
       background:
         linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.90)),
@@ -93,7 +95,7 @@
       text-align: center; padding: 120px 24px 96px; position: relative; overflow: hidden;
     }
     .lp-hero-inner { max-width: 880px; display: flex; flex-direction: column; align-items: center; }
-    .lp-hero p { font-size: 19px; color: var(--lp-muted); margin-bottom: 38px; max-width: 620px; }
+    .lp-hero p { font-size: 19px; color: var(--lp-muted); margin-bottom: 38px; max-width: 700px; }
     .lp-hero .lp-h1 { text-shadow: 0 2px 30px rgba(0,0,0,0.5); }
     .lp-pill {
       display: inline-flex; align-items: center; gap: 9px;
@@ -103,32 +105,16 @@
     }
     .lp-pill .lp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lp-orange); box-shadow: 0 0 10px var(--lp-orange); }
     .lp-hero-trust { font-family: var(--lp-font-mono); font-size: 12.5px; color: var(--lp-grey); margin-top: 26px; letter-spacing: 0.8px; }
+    .lp-hero-tagline { font-family: var(--lp-font-mono); font-size: 12px; color: var(--lp-muted); margin-top: 12px; letter-spacing: 0.6px; font-style: italic; max-width: 500px; }
 
-    /* ── STATS ── */
     .lp-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 0; border-top: 1px solid var(--lp-line); border-bottom: 1px solid var(--lp-line); background: var(--lp-panel2); }
     .lp-stat { flex: 1; min-width: 120px; text-align: center; padding: 28px 18px; }
     .lp-stat-num { font-family: var(--lp-font-display); font-size: 44px; font-weight: 900; color: var(--lp-gold); display: block; line-height: 1; }
     .lp-stat-label { font-family: var(--lp-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--lp-grey); margin-top: 6px; }
 
-    /* ── SECTIONS ── */
     .lp-section { padding: 100px 24px; }
     .lp-panel-section  { background: var(--lp-panel2); }
-    .lp-strip {
-      position: relative;
-      background:
-        linear-gradient(90deg, rgba(10,10,10,0.86) 0%, rgba(10,10,10,0.45) 60%, rgba(10,10,10,0.30) 100%);
-      padding: 0; min-height: 460px; display: flex; align-items: center;
-    }
-    .lp-strip-overlay {
-      width: 100%; height: 100%; min-height: 460px; display: flex; align-items: flex-end;
-      padding: 70px 24px 60px;
-    }
-    .lp-strip-overlay .lp-inner { max-width: var(--lp-max); margin: 0 auto; width: 100%; }
-    .lp-strip-overlay .lp-content { max-width: 540px; }
-    .lp-strip-overlay .lp-h2, .lp-strip-overlay p { text-shadow: 0 2px 18px rgba(0,0,0,0.7); }
-    .lp-strip-overlay p { color: var(--lp-cream); font-size: 17px; }
 
-    /* ── CTA ── */
     .lp-cta-section { background: var(--lp-gold); padding: 100px 24px; text-align: center !important; }
     .lp-cta-section .lp-h2 { color: #0A0A0A; text-align: center !important; margin-left: auto; margin-right: auto; }
     .lp-cta-section p { color: #3A2010; text-align: center !important; max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -136,9 +122,10 @@
     .lp-cta-section .lp-eyebrow::before { background: #5A2A12; }
     .lp-cta-section .lp-btn { background: #0A0A0A; color: #F5F0E8 !important; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
     .lp-cta-section .lp-btn:hover { background: #000; }
+    .lp-cta-section .lp-btn-outline { color: #0A0A0A !important; border-color: #0A0A0A; margin-top: 16px; }
+    .lp-cta-section .lp-btn-outline:hover { background: rgba(0,0,0,0.08); }
 
-    /* ── STEPS ── */
-    .lp-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .lp-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
     .lp-card {
       background: var(--lp-panel); border: 1px solid var(--lp-line); border-radius: 8px;
       padding: 28px 26px; transition: border-color 0.2s;
@@ -148,19 +135,16 @@
     .lp-card h4 { font-family: var(--lp-font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; }
     .lp-card p { font-size: 15px; color: var(--lp-grey); margin-bottom: 0; }
 
-    /* ── WHY ME ── */
     .lp-media { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
     .lp-media-img img { border-radius: 8px; border: 1px solid var(--lp-line); }
     .lp-media-body p { font-size: 18px; }
 
-    /* ── TRANSFORMATIONS ── */
     .lp-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
-    @media (max-width: 768px) { .lp-grid { grid-template-columns: 1fr; } }
     .lp-testimonial { text-align: center; }
     .lp-testimonial img { border-radius: 8px; border: 1px solid var(--lp-line); width: 100%; aspect-ratio: 3/4; object-fit: cover; margin-bottom: 16px; }
     .lp-testimonial h4 { font-family: var(--lp-font-display); font-size: 22px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+    .lp-testimonial .lp-goal { font-family: var(--lp-font-mono); font-size: 11px; color: var(--lp-gold); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
 
-    /* ── GUARANTEE ── */
     .lp-guarantee {
       display: flex; align-items: center; gap: 20px; max-width: 700px; margin: 0 auto;
       text-align: left; padding: 32px; border: 1px solid var(--lp-line); border-radius: 8px; background: var(--lp-panel);
@@ -169,25 +153,20 @@
     .lp-guarantee h4 { font-family: var(--lp-font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
     .lp-guarantee p { margin-bottom: 0; font-size: 15px; }
 
-    /* ── FOOTER ── */
     .lp-footer { padding: 50px 24px; text-align: center; border-top: 1px solid var(--lp-line); }
     .lp-footer p { font-size: 13px; color: var(--lp-grey); margin: 0; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .lp-hero { padding: 96px 20px 64px; min-height: auto; }
-      .lp-steps { grid-template-columns: 1fr; }
+      .lp-steps { grid-template-columns: repeat(2, 1fr); }
       .lp-grid { grid-template-columns: 1fr; }
       .lp-media { grid-template-columns: 1fr; gap: 30px; }
-      .lp-strip { min-height: 380px; }
-      .lp-strip-overlay { min-height: 380px; padding: 50px 20px; }
-      .lp-strip-overlay { background: linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.88)); align-items: flex-end; padding: 0 22px 36px; }
       .lp-section { padding: 70px 20px; }
       .lp-cta-section { padding: 70px 20px; }
       .lp-guarantee { flex-direction: column; text-align: center; }
     }
-    body *:has(.lp-hero) {
-      /* any padding adjustments */
+    @media (max-width: 480px) {
+      .lp-steps { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -197,43 +176,49 @@
   <section class="lp-hero">
     <div class="lp-hero-inner">
       <span class="lp-pill"><span class="lp-dot"></span>Ascend Fitness · Online Coaching</span>
-      <h1 class="lp-h1">6 Weeks.<br><span class="lp-accent-word">Your Transformation.</span></h1>
-      <p>Real training. Real accountability. Built around your life, not a highlight reel. No sales calls, no chasing, no "let me get back to you." Just buy your spot and Michael takes it from there.</p>
-      <a href="#buy" class="lp-btn">Get Started / $475</a>
-      <div class="lp-hero-trust">13+ YEARS COACHING · EVERY PLAN BUILT FROM SCRATCH · BUY WITH CONFIDENCE</div>
+      <h1 class="lp-h1">Not Just A Program.<br><span class="lp-accent-word">Legitimate Coaching.</span></h1>
+      <p>Realistic training, nutrition, real accountability. No BS sales pitch. Just clarity and commitment for your goal.</p>
+      <a href="#invest" class="lp-btn">Get Started / $475</a>
+      <div class="lp-hero-trust">14+ YEARS EXPERIENCE · EACH PLAN CUSTOMISED TO MAKE SURE WE CAN'T FAIL · INVEST WITH CONFIDENCE</div>
+      <div class="lp-hero-tagline">This isn't about giving you more work — it's filtering the BS and building habits that are easy.</div>
     </div>
   </section>
 
   <!-- ═══ STAT BAR ═══ -->
   <div class="lp-stats">
     <div class="lp-stat"><div class="lp-stat-num">6</div><div class="lp-stat-label">Week Program</div></div>
-    <div class="lp-stat"><div class="lp-stat-num">13+</div><div class="lp-stat-label">Years Coaching</div></div>
+    <div class="lp-stat"><div class="lp-stat-num">14+</div><div class="lp-stat-label">Years Experience</div></div>
     <div class="lp-stat"><div class="lp-stat-num">100%</div><div class="lp-stat-label">Built For You</div></div>
-    <div class="lp-stat"><div class="lp-stat-num">$475</div><div class="lp-stat-label">One Payment</div></div>
+    <div class="lp-stat"><div class="lp-stat-num">$475</div><div class="lp-stat-label">One Investment</div></div>
   </div>
 
   <!-- ═══ HOW IT WORKS ═══ -->
   <section class="lp-section">
     <div class="lp-container">
       <span class="lp-eyebrow">How It Works</span>
-      <h2 class="lp-h2">Three steps. No bullshit.</h2>
-      <p class="lp-lead">You're 60 seconds away from starting. No phone calls, no sales pitch, no pressure.</p>
+      <h2 class="lp-h2">4 Steps. No BS.</h2>
+      <p class="lp-lead">You're 60 seconds away from starting.</p>
 
       <div class="lp-steps">
         <div class="lp-card">
           <div class="lp-card-num">01</div>
-          <h4>Click &amp; Buy</h4>
-          <p>Secure your spot in the 6-week program. One payment of $475. Instant confirmation. No waiting on a call-back.</p>
+          <h4>Click &amp; Invest</h4>
+          <p>1 investment, instant confirmation.</p>
         </div>
         <div class="lp-card">
           <div class="lp-card-num">02</div>
-          <h4>Enter Your Details</h4>
-          <p>Name, email, phone. That's it. Michael uses this to reach you directly. No forms, no questionnaires, no friction.</p>
+          <h4>The Set Up</h4>
+          <p>Provide your name, email and contact number. We discuss everything needed to know about getting set up on the platform. You set up, while I build!</p>
         </div>
         <div class="lp-card">
           <div class="lp-card-num">03</div>
-          <h4>Michael Contacts You</h4>
-          <p>Within 24 hours, Michael reaches out. He learns your goals, your schedule, and builds your program from scratch. You start immediately.</p>
+          <h4>Program Delivered</h4>
+          <p>Within 48hrs, I go over everything built. You have everything you need!</p>
+        </div>
+        <div class="lp-card">
+          <div class="lp-card-num">04</div>
+          <h4>We Start Coaching!</h4>
+          <p>Your program is live. Daily check-ins, real accountability, and a coach in your corner from day one.</p>
         </div>
       </div>
     </div>
@@ -248,19 +233,19 @@
       <div class="lp-grid" style="margin-top:40px;">
         <div class="lp-card">
           <h4>Custom Training Plan</h4>
-          <p>Built for your gym, your equipment, your starting point. Nothing copy-pasted. Nothing generic.</p>
+          <p>Built for the equipment you already have. Gym based / home based / athletic performance.</p>
         </div>
         <div class="lp-card">
           <h4>Nutrition That Fits</h4>
-          <p>No meal plans. No calorie counting unless you want it. Just real food and habits you can hold onto.</p>
+          <p>Real nutrition guidance and targets that stick, food substitution techniques that you didn't know. Hint: dessert fits!</p>
         </div>
         <div class="lp-card">
           <h4>Daily Accountability</h4>
-          <p>Check-ins, form checks, and someone who actually notices when you go quiet. You're not doing this alone.</p>
+          <p>Check-ins that get you excited, someone who notices when you go quiet, and the realisation that you're not doing this alone.</p>
         </div>
         <div class="lp-card">
-          <h4>Access to Michael</h4>
-          <p>Direct line to your coach. Not a group chat. Not an automated bot. A real person who knows your name and your goals.</p>
+          <h4>24/7 Support</h4>
+          <p>Direct access to my number, not an automated bot. A real person who has seen it all and genuinely is excited for you.</p>
         </div>
       </div>
     </div>
@@ -275,9 +260,9 @@
         </div>
         <div class="lp-media-body">
           <span class="lp-eyebrow">Your Coach</span>
-          <h2 class="lp-h2">I've been on the other side of <span class="lp-accent-word">starting over.</span></h2>
-          <p>13 years ago I was the guy who tried every program and fell off every time. Not because I was lazy. Because nothing fit my actual life.</p>
-          <p>I stopped copying what worked for other people and built something that worked for me. That's what I do for every client now. No templates. No ego. Just real coaching, real results, and someone who actually gives a shit.</p>
+          <h2 class="lp-h2">What makes me different? <span class="lp-accent-word">I've been there.</span></h2>
+          <p>From ACL recons to finding love for strength training. 12-15HR days Monday to Saturday. I've had every excuse to not show up. A truck driver of 9 years having to make the best of his nutrition from gas stops and takeaway. Late night sessions just to find out there's other ways around it.</p>
+          <p>Now my passion is to lay out every playbook and coach for real results. Not just ego. Someone who actually cares.</p>
           <p style="font-family:var(--lp-font-mono);font-size:13px;color:var(--lp-gold);text-transform:uppercase;letter-spacing:1px;">Michael Austin, Founder, Ascend Fitness</p>
         </div>
       </div>
@@ -288,23 +273,33 @@
   <section class="lp-section lp-panel-section">
     <div class="lp-container">
       <span class="lp-eyebrow">Real Results</span>
-      <h2 class="lp-h2">Not stock photos.<br><span class="lp-accent-word">Actual clients.</span></h2>
+      <h2 class="lp-h2">Actual clients.<br><span class="lp-accent-word">Real transformations.</span></h2>
 
-      <div class="lp-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="lp-grid" style="grid-template-columns: repeat(4, 1fr);">
         <div class="lp-testimonial">
           <img src="images/transform-luke.jpeg" alt="Client transformation, Luke" />
           <h4>Luke</h4>
-          <p style="color:var(--lp-muted);">"I'd tried everything. This was the first time it actually stuck."</p>
+          <p style="color:var(--lp-muted);">"I've learnt more from you in 6 weeks than I have 2.5 years figuring it out myself."</p>
+          <div class="lp-goal">Goal: Build as much muscle as possible</div>
         </div>
         <div class="lp-testimonial">
           <img src="images/transform-ryan.jpeg" alt="Client transformation, Ryan" />
           <h4>Ryan</h4>
-          <p style="color:var(--lp-muted);">"Dropped 12kg without giving up his life. Michael actually gets how real people live."</p>
+          <p style="color:var(--lp-muted);">"I run 2 businesses, a father, husband and recovering from a bulging disc. I lost 4kg in 4 weeks and I feel stronger and lighter!"</p>
+          <div class="lp-goal">Goal: Lose weight &amp; build muscle</div>
         </div>
         <div class="lp-testimonial">
           <img src="images/transform-1.jpg" alt="Client transformation, Ezra" />
           <h4>Ezra</h4>
-          <p style="color:var(--lp-muted);">"Finally a program that worked with my schedule, not against it."</p>
+          <p style="color:var(--lp-muted);">"Michael helped me drop an insane amount of weight for my MMA fight. Strength remained, which was my biggest concern!"</p>
+          <div class="lp-goal">Goal: Lose fat, maintain/build muscle</div>
+        </div>
+        <div class="lp-testimonial">
+          <!-- Sophie photo placeholder — replace src with actual photo -->
+          <img src="images/sophie.jpg" alt="Client transformation, Sophie" onerror="this.parentElement.innerHTML='<div style=\'width:100%;aspect-ratio:3/4;background:var(--lp-panel);border:1px solid var(--lp-line);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;\'><span style=\'font-size:48px;opacity:0.3;\'>📷</span></div>'" />
+          <h4>Sophie</h4>
+          <p style="color:var(--lp-muted);">"OMG I CANNOT! I LOST 9.8KG! AND MY PHOTOS! :')"</p>
+          <div class="lp-goal">Goal: Tone / lose fat / build muscle</div>
         </div>
       </div>
     </div>
@@ -315,7 +310,7 @@
     <div class="lp-container">
       <span class="lp-eyebrow">No Risk</span>
       <h2 class="lp-h2" style="text-align:center;">Not sure? <span class="lp-accent-word">Don't be.</span></h2>
-      <p style="text-align:center;max-width:600px;margin:0 auto 40px;">If you show up for two weeks and genuinely feel it's not for you, Michael will refund your money. No questions, no awkwardness. He only wants clients who want to be there.</p>
+      <p style="text-align:center;max-width:600px;margin:0 auto 40px;">If you show up for two weeks and genuinely feel it's not for you, Michael will refund your investment. No questions, no awkwardness. He only wants clients who want to be there.</p>
 
       <div class="lp-guarantee">
         <div class="lp-guarantee-icon">🔒</div>
@@ -327,14 +322,18 @@
     </div>
   </section>
 
-  <!-- ═══ BUY SECTION ═══ -->
-  <section class="lp-cta-section" id="buy">
+  <!-- ═══ INVEST SECTION ═══ -->
+  <section class="lp-cta-section" id="invest">
     <div class="lp-container">
       <span class="lp-eyebrow">Limited Spots</span>
       <h2 class="lp-h2">Ready to start?</h2>
-      <p style="margin-bottom:32px;">6 weeks. One payment. Michael in your corner. You've tried starting alone. Now try starting with someone who knows the way.</p>
-      <a href="https://buy.stripe.com/3cI9AUf7q32f1Ro5g00x202" class="lp-btn" onclick="fbq('track', 'InitiateCheckout');">Buy Now / $475 AUD</a>
+      <p style="margin-bottom:32px;">6 weeks. One investment. Michael in your corner. You've tried starting alone. Now try starting with someone who knows the way.</p>
+      <a href="https://buy.stripe.com/3cI9AUf7q32f1Ro5g00x202" class="lp-btn" onclick="fbq('track', 'InitiateCheckout');">Invest Now / $475 AUD</a>
       <p style="font-size:13px;color:#5A2A12;margin-top:18px;">Secure payment via Stripe. Instant confirmation. You'll hear from Michael within 24 hours.</p>
+      <div style="margin-top:32px;">
+        <p style="font-size:14px;color:#5A2A12;margin-bottom:12px;">Still not sure?</p>
+        <a href="https://calendly.com/ascendfitnesspt" class="lp-btn-outline" target="_blank">Book a Clarity Call</a>
+      </div>
     </div>
   </section>
 
