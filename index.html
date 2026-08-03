@@ -52,6 +52,7 @@
       font-family: var(--lp-font-body); font-size: 16px; font-weight: 400;
       background: var(--lp-black); line-height: 1.7;
       color: var(--lp-cream); -webkit-font-smoothing: antialiased;
+      overflow-x: hidden; max-width: 100vw;
     }
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -153,6 +154,23 @@
     .lp-guarantee h4 { font-family: var(--lp-font-display); font-size: 20px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
     .lp-guarantee p { margin-bottom: 0; font-size: 15px; }
 
+    .lp-carousel { position: relative; max-width: 600px; margin: 40px auto 0; overflow: hidden; touch-action: pan-y; }
+    .lp-carousel-track { display: flex; transition: transform 0.4s ease; will-change: transform; }
+    .lp-carousel-slide { min-width: 100%; padding: 0 4px; }
+    .lp-carousel-slide .lp-testimonial { max-width: 400px; margin: 0 auto; }
+    .lp-carousel-slide .lp-testimonial img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px; border: 1px solid var(--lp-line); margin-bottom: 16px; background: var(--lp-panel); }
+    .lp-carousel-slide .lp-testimonial h4 { font-family: var(--lp-font-display); font-size: 22px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; }
+    .lp-carousel-slide .lp-testimonial p { font-size: 16px; color: var(--lp-muted); margin-bottom: 0; }
+    .lp-carousel-slide .lp-testimonial .lp-goal { font-family: var(--lp-font-mono); font-size: 11px; color: var(--lp-gold); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+    .lp-carousel-btn { position: absolute; top: 35%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: var(--lp-panel); border: 1px solid var(--lp-line); color: var(--lp-cream); font-size: 20px; cursor: pointer; z-index: 2; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+    .lp-carousel-btn:hover { background: var(--lp-gold); color: #0A0A0A; border-color: var(--lp-gold); }
+    .lp-carousel-prev { left: -8px; }
+    .lp-carousel-next { right: -8px; }
+    .lp-carousel-dots { display: flex; justify-content: center; gap: 10px; margin-top: 24px; }
+    .lp-carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lp-line); cursor: pointer; transition: all 0.3s; border: none; padding: 0; }
+    .lp-carousel-dot.active { background: var(--lp-gold); width: 24px; border-radius: 4px; }
+    @media (max-width: 640px) { .lp-carousel-btn { width: 36px; height: 36px; font-size: 16px; } .lp-carousel-prev { left: 0; } .lp-carousel-next { right: 0; } .lp-carousel { max-width: 100%; } .lp-carousel-slide .lp-testimonial { max-width: 320px; } }
+
     .lp-footer { padding: 50px 24px; text-align: center; border-top: 1px solid var(--lp-line); }
     .lp-footer p { font-size: 13px; color: var(--lp-grey); margin: 0; }
 
@@ -178,7 +196,7 @@
       <span class="lp-pill"><span class="lp-dot"></span>Ascend Fitness · Online Coaching</span>
       <h1 class="lp-h1">Not Just A Program.<br><span class="lp-accent-word">Legitimate Coaching.</span></h1>
       <p>Realistic training, nutrition, real accountability. No BS sales pitch. Just clarity and commitment for your goal.</p>
-      <a href="#invest" class="lp-btn">Get Started / $475</a>
+      <a href="https://buy.stripe.com/3cI9AUf7q32f1Ro5g00x202" class="lp-btn" onclick="fbq('track', 'InitiateCheckout');">Get Started / $475</a>
       <div class="lp-hero-trust">14+ YEARS EXPERIENCE · EACH PLAN CUSTOMISED TO MAKE SURE WE CAN'T FAIL · INVEST WITH CONFIDENCE</div>
       <div class="lp-hero-tagline">This isn't about giving you more work — it's filtering the BS and building habits that are easy.</div>
     </div>
@@ -275,31 +293,39 @@
       <span class="lp-eyebrow">Real Results</span>
       <h2 class="lp-h2">Actual clients.<br><span class="lp-accent-word">Real transformations.</span></h2>
 
-      <div class="lp-grid" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="lp-testimonial">
-          <img src="images/transform-luke.jpeg" alt="Client transformation, Luke" />
-          <h4>Luke</h4>
-          <p style="color:var(--lp-muted);">"I've learnt more from you in 6 weeks than I have 2.5 years figuring it out myself."</p>
-          <div class="lp-goal">Goal: Build as much muscle as possible</div>
+      <div class="lp-carousel">
+        <button class="lp-carousel-btn lp-carousel-prev" onclick="moveSlide(-1)" aria-label="Previous">‹</button>
+        <button class="lp-carousel-btn lp-carousel-next" onclick="moveSlide(1)" aria-label="Next">›</button>
+        <div class="lp-carousel-track" id="carouselTrack">
+          <div class="lp-carousel-slide">
+            <div class="lp-testimonial">
+              <img src="images/sophie.jpg" alt="Client transformation, Sophie" />
+              <h4>Sophie</h4>
+              <p>"OMG I CANNOT! I LOST 9.8KG! AND MY PHOTO'S! :')"</p>
+              <div class="lp-goal">Goal: Tone / lose fat / build muscle</div>
+            </div>
+          </div>
+          <div class="lp-carousel-slide">
+            <div class="lp-testimonial">
+              <img src="images/transform-sam.jpg" alt="Client transformation, Luke" />
+              <h4>Luke</h4>
+              <p>"I've learnt more from you in 6 weeks than I have 2.5 years figuring it out myself."</p>
+              <div class="lp-goal">Goal: Build as much muscle as possible</div>
+            </div>
+          </div>
+          <div class="lp-carousel-slide">
+            <div class="lp-testimonial">
+              <img src="images/transform-josh.jpg" alt="Client transformation, Ezra" />
+              <h4>Ezra</h4>
+              <p>"Michael helped me drop an insane amount of weight for my MMA fight. Strength remained, which was my biggest concern!"</p>
+              <div class="lp-goal">Goal: Lose fat, maintain/build muscle</div>
+            </div>
+          </div>
         </div>
-        <div class="lp-testimonial">
-          <img src="images/transform-ryan.jpeg" alt="Client transformation, Ryan" />
-          <h4>Ryan</h4>
-          <p style="color:var(--lp-muted);">"I run 2 businesses, a father, husband and recovering from a bulging disc. I lost 4kg in 4 weeks and I feel stronger and lighter!"</p>
-          <div class="lp-goal">Goal: Lose weight &amp; build muscle</div>
-        </div>
-        <div class="lp-testimonial">
-          <img src="images/transform-1.jpg" alt="Client transformation, Ezra" />
-          <h4>Ezra</h4>
-          <p style="color:var(--lp-muted);">"Michael helped me drop an insane amount of weight for my MMA fight. Strength remained, which was my biggest concern!"</p>
-          <div class="lp-goal">Goal: Lose fat, maintain/build muscle</div>
-        </div>
-        <div class="lp-testimonial">
-          <!-- Sophie photo placeholder — replace src with actual photo -->
-          <img src="images/sophie.jpg" alt="Client transformation, Sophie" onerror="this.parentElement.innerHTML='<div style=\'width:100%;aspect-ratio:3/4;background:var(--lp-panel);border:1px solid var(--lp-line);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;\'><span style=\'font-size:48px;opacity:0.3;\'>📷</span></div>'" />
-          <h4>Sophie</h4>
-          <p style="color:var(--lp-muted);">"OMG I CANNOT! I LOST 9.8KG! AND MY PHOTOS! :')"</p>
-          <div class="lp-goal">Goal: Tone / lose fat / build muscle</div>
+        <div class="lp-carousel-dots" id="carouselDots">
+          <button class="lp-carousel-dot active" onclick="goToSlide(0)"></button>
+          <button class="lp-carousel-dot" onclick="goToSlide(1)"></button>
+          <button class="lp-carousel-dot" onclick="goToSlide(2)"></button>
         </div>
       </div>
     </div>
@@ -310,13 +336,13 @@
     <div class="lp-container">
       <span class="lp-eyebrow">No Risk</span>
       <h2 class="lp-h2" style="text-align:center;">Not sure? <span class="lp-accent-word">Don't be.</span></h2>
-      <p style="text-align:center;max-width:600px;margin:0 auto 40px;">If you show up for two weeks and genuinely feel it's not for you, Michael will refund your investment. No questions, no awkwardness. He only wants clients who want to be there.</p>
+      <p style="text-align:center;max-width:600px;margin:0 auto 40px;">If you follow the program 100% and don't see results by the end of 6 weeks, you'll receive another 6 weeks of coaching — completely free. No catch.</p>
 
       <div class="lp-guarantee">
         <div class="lp-guarantee-icon">🔒</div>
         <div>
-          <h4>2-Week Money Back Guarantee</h4>
-          <p>Show up, do the work. If after 14 days you're not convinced, you get every dollar back. Simple.</p>
+          <h4>Results Guarantee — Or It's Free</h4>
+          <p>Complete the full 6-week program, follow the plan, and if you're not seeing real results, your next 6 weeks of coaching is on us. That's how confident we are.</p>
         </div>
       </div>
     </div>
@@ -332,7 +358,7 @@
       <p style="font-size:13px;color:#5A2A12;margin-top:18px;">Secure payment via Stripe. Instant confirmation. You'll hear from Michael within 24 hours.</p>
       <div style="margin-top:32px;">
         <p style="font-size:14px;color:#5A2A12;margin-bottom:12px;">Still not sure?</p>
-        <a href="https://calendly.com/ascendfitnesspt" class="lp-btn-outline" target="_blank">Book a Clarity Call</a>
+        <a href="https://calendly.com/ascendfitpt-info/30" class="lp-btn-outline" target="_blank">Book a Clarity Call</a>
       </div>
     </div>
   </section>
@@ -344,5 +370,39 @@
     <p style="margin-top:4px;">ascendfitpt.com</p>
   </footer>
 
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 3;
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('#carouselDots .lp-carousel-dot');
+
+    function goToSlide(n) {
+      currentSlide = n;
+      track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+      dots.forEach(function(d, i) { d.classList.toggle('active', i === currentSlide); });
+    }
+
+    function moveSlide(dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      goToSlide(currentSlide);
+    }
+
+    // Touch/swipe support
+    var carouselEl = track.parentElement;
+    var touchStartX = 0, touchStartY = 0;
+    carouselEl.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, {passive: true});
+    carouselEl.addEventListener('touchend', function(e) {
+      var dx = touchStartX - e.changedTouches[0].clientX;
+      var dy = touchStartY - e.changedTouches[0].clientY;
+      // Only handle horizontal swipes
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        e.preventDefault();
+        moveSlide(dx > 0 ? 1 : -1);
+      }
+    });
+  </script>
 </body>
 </html>
